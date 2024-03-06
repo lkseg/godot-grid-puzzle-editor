@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://nm4op2rrjukg"]
+
+[ext_resource type="Script" path="res://addons/puzzle_editor/puzzle_object.gd" id="1_tpxaf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1of4h"]
+albedo_color = Color(1, 0.533333, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0ipg1"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_tpxaf")
+
+[node name="mesh_instance_3d" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_1of4h")
+mesh = SubResource("BoxMesh_0ipg1")

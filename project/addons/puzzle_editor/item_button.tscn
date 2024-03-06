@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c36c4unet5p0h"]
+
+[ext_resource type="Texture2D" uid="uid://bytvkr3cshjay" path="res://icon.svg" id="1_nrhvw"]
+
+[node name="button" type="Button"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 8.0
+offset_bottom = 8.0
+icon = ExtResource("1_nrhvw")
+expand_icon = true

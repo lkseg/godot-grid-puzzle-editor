@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://by3vpxxcsdsay"]
+
+[ext_resource type="PackedScene" uid="uid://ssyncefr0i0g" path="res://assets/objects/basic/blockHexagonLow.glb" id="1_xgt3p"]
+
+[node name="blockHexagonLow2" instance=ExtResource("1_xgt3p")]

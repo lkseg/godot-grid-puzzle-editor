@@ -1,0 +1,284 @@
+[gd_scene load_steps=6 format=3 uid="uid://bwo5m8ud4vqjq"]
+
+[ext_resource type="PackedScene" uid="uid://chvbskds7bwhi" path="res://scenes/puzzle_editor_base.tscn" id="1_rv80e"]
+[ext_resource type="PackedScene" uid="uid://bgyn3678iin83" path="res://scenes/game_objects/block.tscn" id="2_eydqg"]
+[ext_resource type="PackedScene" uid="uid://cxfju7n3ka3d7" path="res://scenes/game_objects/player_start.tscn" id="4_37or5"]
+[ext_resource type="PackedScene" uid="uid://y2yo3a0k7ako" path="res://scenes/game_objects/goal.tscn" id="6_erldl"]
+[ext_resource type="PackedScene" uid="uid://b0pn8wc3lcojr" path="res://scenes/game_objects/crate.tscn" id="7_te7p5"]
+
+[node name="level" instance=ExtResource("1_rv80e")]
+
+[node name="camera" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.4885, 0.872564, 0, -0.872564, 0.4885, 3.67994, 8.4053, 8.00135)
+
+[node name="node_3d" parent="puzzle_editor" index="0" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0.5)
+cell = Vector3i(0, 1, 0)
+
+[node name="@Node3D@43148" parent="puzzle_editor" index="1" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, 0.5)
+cell = Vector3i(1, 1, 0)
+
+[node name="@Node3D@43149" parent="puzzle_editor" index="2" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, 1.5)
+cell = Vector3i(1, 1, 1)
+
+[node name="@Node3D@43150" parent="puzzle_editor" index="3" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1, 1.5)
+cell = Vector3i(2, 1, 1)
+
+[node name="@Node3D@43151" parent="puzzle_editor" index="4" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1, 0.5)
+cell = Vector3i(2, 1, 0)
+
+[node name="@Node3D@43152" parent="puzzle_editor" index="5" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1, 0.5)
+cell = Vector3i(3, 1, 0)
+
+[node name="@Node3D@43153" parent="puzzle_editor" index="6" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1, 0.5)
+cell = Vector3i(4, 1, 0)
+
+[node name="@Node3D@43154" parent="puzzle_editor" index="7" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 1, 0.5)
+cell = Vector3i(5, 1, 0)
+
+[node name="@Node3D@43155" parent="puzzle_editor" index="8" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 1, 0.5)
+cell = Vector3i(6, 1, 0)
+
+[node name="@Node3D@43156" parent="puzzle_editor" index="9" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 1, 0.5)
+cell = Vector3i(7, 1, 0)
+
+[node name="@Node3D@43157" parent="puzzle_editor" index="10" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 1, 0.5)
+cell = Vector3i(8, 1, 0)
+
+[node name="@Node3D@43158" parent="puzzle_editor" index="11" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 1, 1.5)
+cell = Vector3i(7, 1, 1)
+
+[node name="@Node3D@43159" parent="puzzle_editor" index="12" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 1, 1.5)
+cell = Vector3i(6, 1, 1)
+
+[node name="@Node3D@43160" parent="puzzle_editor" index="13" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 1, 1.5)
+cell = Vector3i(5, 1, 1)
+
+[node name="@Node3D@43161" parent="puzzle_editor" index="14" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1, 1.5)
+cell = Vector3i(4, 1, 1)
+
+[node name="@Node3D@43162" parent="puzzle_editor" index="15" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1, 1.5)
+cell = Vector3i(3, 1, 1)
+
+[node name="@Node3D@43163" parent="puzzle_editor" index="16" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 1.5)
+cell = Vector3i(0, 1, 1)
+
+[node name="@Node3D@43164" parent="puzzle_editor" index="17" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 1, 1.5)
+cell = Vector3i(8, 1, 1)
+
+[node name="@Node3D@43165" parent="puzzle_editor" index="18" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 1, 2.5)
+cell = Vector3i(8, 1, 2)
+
+[node name="@Node3D@43166" parent="puzzle_editor" index="19" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 1, 3.5)
+cell = Vector3i(8, 1, 3)
+
+[node name="@Node3D@43167" parent="puzzle_editor" index="20" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 1, 4.5)
+cell = Vector3i(8, 1, 4)
+
+[node name="@Node3D@43168" parent="puzzle_editor" index="21" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 1, 5.5)
+cell = Vector3i(8, 1, 5)
+
+[node name="@Node3D@43169" parent="puzzle_editor" index="22" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 1, 5.5)
+cell = Vector3i(7, 1, 5)
+
+[node name="@Node3D@43170" parent="puzzle_editor" index="23" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 1, 5.5)
+cell = Vector3i(6, 1, 5)
+
+[node name="@Node3D@43171" parent="puzzle_editor" index="24" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 1, 5.5)
+cell = Vector3i(5, 1, 5)
+
+[node name="@Node3D@43172" parent="puzzle_editor" index="25" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1, 5.5)
+cell = Vector3i(4, 1, 5)
+
+[node name="@Node3D@43173" parent="puzzle_editor" index="26" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1, 5.5)
+cell = Vector3i(3, 1, 5)
+
+[node name="@Node3D@43174" parent="puzzle_editor" index="27" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1, 5.5)
+cell = Vector3i(2, 1, 5)
+
+[node name="@Node3D@43175" parent="puzzle_editor" index="28" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, 5.5)
+cell = Vector3i(1, 1, 5)
+
+[node name="@Node3D@43176" parent="puzzle_editor" index="29" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 5.5)
+cell = Vector3i(0, 1, 5)
+
+[node name="@Node3D@43177" parent="puzzle_editor" index="30" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 4.5)
+cell = Vector3i(0, 1, 4)
+
+[node name="@Node3D@43178" parent="puzzle_editor" index="31" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 3.5)
+cell = Vector3i(0, 1, 3)
+
+[node name="@Node3D@43179" parent="puzzle_editor" index="32" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 2.5)
+cell = Vector3i(0, 1, 2)
+
+[node name="@Node3D@43180" parent="puzzle_editor" index="33" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, 2.5)
+cell = Vector3i(1, 1, 2)
+
+[node name="@Node3D@43181" parent="puzzle_editor" index="34" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1, 2.5)
+cell = Vector3i(2, 1, 2)
+
+[node name="@Node3D@43182" parent="puzzle_editor" index="35" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1, 2.5)
+cell = Vector3i(3, 1, 2)
+
+[node name="@Node3D@43183" parent="puzzle_editor" index="36" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1, 2.5)
+cell = Vector3i(4, 1, 2)
+
+[node name="@Node3D@43184" parent="puzzle_editor" index="37" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 1, 2.5)
+cell = Vector3i(5, 1, 2)
+
+[node name="@Node3D@43185" parent="puzzle_editor" index="38" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 1, 2.5)
+cell = Vector3i(6, 1, 2)
+
+[node name="@Node3D@43186" parent="puzzle_editor" index="39" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 1, 2.5)
+cell = Vector3i(7, 1, 2)
+
+[node name="@Node3D@43187" parent="puzzle_editor" index="40" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 1, 3.5)
+cell = Vector3i(7, 1, 3)
+
+[node name="@Node3D@43188" parent="puzzle_editor" index="41" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 1, 4.5)
+cell = Vector3i(7, 1, 4)
+
+[node name="@Node3D@43189" parent="puzzle_editor" index="42" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 1, 3.5)
+cell = Vector3i(6, 1, 3)
+
+[node name="@Node3D@43190" parent="puzzle_editor" index="43" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 1, 4.5)
+cell = Vector3i(6, 1, 4)
+
+[node name="@Node3D@43191" parent="puzzle_editor" index="44" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 1, 3.5)
+cell = Vector3i(5, 1, 3)
+
+[node name="@Node3D@43192" parent="puzzle_editor" index="45" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 1, 4.5)
+cell = Vector3i(5, 1, 4)
+
+[node name="@Node3D@43193" parent="puzzle_editor" index="46" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1, 3.5)
+cell = Vector3i(4, 1, 3)
+
+[node name="@Node3D@43194" parent="puzzle_editor" index="47" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1, 4.5)
+cell = Vector3i(4, 1, 4)
+
+[node name="@Node3D@43195" parent="puzzle_editor" index="48" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1, 4.5)
+cell = Vector3i(3, 1, 4)
+
+[node name="@Node3D@43196" parent="puzzle_editor" index="49" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1, 3.5)
+cell = Vector3i(3, 1, 3)
+
+[node name="@Node3D@43197" parent="puzzle_editor" index="50" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1, 3.5)
+cell = Vector3i(2, 1, 3)
+
+[node name="@Node3D@43198" parent="puzzle_editor" index="51" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1, 4.5)
+cell = Vector3i(2, 1, 4)
+
+[node name="@Node3D@43199" parent="puzzle_editor" index="52" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, 4.5)
+cell = Vector3i(1, 1, 4)
+
+[node name="@Node3D@43200" parent="puzzle_editor" index="53" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, 3.5)
+cell = Vector3i(1, 1, 3)
+
+[node name="@Node3D@43201" parent="puzzle_editor" index="54" instance=ExtResource("4_37or5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 2, 5.5)
+cell = Vector3i(4, 2, 5)
+
+[node name="@Node3D@43202" parent="puzzle_editor" index="55" instance=ExtResource("6_erldl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 2, 1.5)
+cell = Vector3i(4, 2, 1)
+
+[node name="@Node3D@43203" parent="puzzle_editor" index="56" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 2, 4.5)
+cell = Vector3i(4, 2, 4)
+
+[node name="@Node3D@43205" parent="puzzle_editor" index="57" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 2, 5.5)
+cell = Vector3i(5, 2, 5)
+
+[node name="@Node3D@43206" parent="puzzle_editor" index="58" instance=ExtResource("7_te7p5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 2, 5.5)
+cell = Vector3i(3, 2, 5)
+
+[node name="@Node3D@43208" parent="puzzle_editor" index="59" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2, 0.5)
+cell = Vector3i(0, 2, 0)
+
+[node name="@Node3D@43209" parent="puzzle_editor" index="60" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2, 0.5)
+cell = Vector3i(1, 2, 0)
+
+[node name="@Node3D@43210" parent="puzzle_editor" index="61" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2, 0.5)
+cell = Vector3i(2, 2, 0)
+
+[node name="@Node3D@43211" parent="puzzle_editor" index="62" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 2, 0.5)
+cell = Vector3i(3, 2, 0)
+
+[node name="@Node3D@43212" parent="puzzle_editor" index="63" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 2, 0.5)
+cell = Vector3i(4, 2, 0)
+
+[node name="@Node3D@43213" parent="puzzle_editor" index="64" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 2, 0.5)
+cell = Vector3i(5, 2, 0)
+
+[node name="@Node3D@43214" parent="puzzle_editor" index="65" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 2, 0.5)
+cell = Vector3i(6, 2, 0)
+
+[node name="@Node3D@43216" parent="puzzle_editor" index="66" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 2, 0.5)
+cell = Vector3i(7, 2, 0)
+
+[node name="@Node3D@43217" parent="puzzle_editor" index="67" instance=ExtResource("2_eydqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 2, 0.5)
+cell = Vector3i(8, 2, 0)

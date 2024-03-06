@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://fsjw8i6ntbap"]
+
+[ext_resource type="PackedScene" uid="uid://bdyptm7smjixm" path="res://assets/characters/gdbot/gdbot_skin.tscn" id="1_2j7hg"]
+[ext_resource type="Shader" path="res://assets/characters/shared/shaders/screen_shader.gdshader" id="2_i8bau"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_854y5"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_61wei"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_i8bau")
+shader_parameter/intensity = 2.0
+shader_parameter/screen_color = Color(0.101961, 0.662745, 1, 0.0196078)
+shader_parameter/screen_red_offset = Vector2(0, 0)
+shader_parameter/screen_green_offset = Vector2(0, 0)
+shader_parameter/screen_blue_offset = Vector2(0, 0)
+shader_parameter/pixel_size = 32.0
+shader_parameter/face_texture = SubResource("ViewportTexture_854y5")
+
+[node name="model" instance=ExtResource("1_2j7hg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="gdbot" parent="." index="0"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="gdbot/Armature" index="0"]
+bones/2/position = Vector3(0.00737006, -6.4431e-10, 0.52199)
+bones/2/rotation = Quaternion(0.0467907, 0.706116, 0.705556, 0.0374423)
+bones/3/rotation = Quaternion(1, -1.38906e-10, -7.54982e-08, -7.55548e-12)
+bones/4/rotation = Quaternion(-0.162645, -0.225101, -0.10438, 0.954977)
+bones/5/rotation = Quaternion(0.279716, 5.09999e-08, -6.72798e-08, 0.960083)
+bones/7/rotation = Quaternion(-0.162273, 0.111191, 0.0874079, 0.976557)
+bones/8/rotation = Quaternion(0.314407, -3.61475e-08, 1.08868e-07, 0.949288)
+bones/10/rotation = Quaternion(-0.544398, -0.461951, -0.442978, 0.54222)
+bones/11/rotation = Quaternion(1.92344e-10, 2.14142e-08, -0.0017571, 0.999999)
+bones/14/rotation = Quaternion(-0.0819157, 0.00176052, 0.0214146, 0.996408)
+bones/16/rotation = Quaternion(-0.643064, -0.243684, -0.689519, 0.227268)
+bones/17/rotation = Quaternion(-2.29986e-08, 1.6447e-09, -0.443776, 0.896137)
+bones/29/rotation = Quaternion(-0.643064, -0.243684, -0.689519, 0.227268)
+bones/30/rotation = Quaternion(-2.29986e-08, 1.6447e-09, -0.443776, 0.896137)
+bones/32/rotation = Quaternion(0.0150189, -0.031436, -0.430815, 0.901767)
+bones/33/rotation = Quaternion(-0.499703, 0.525279, 0.475114, 0.498643)
+bones/34/rotation = Quaternion(-4.92224e-11, 4.16097e-09, 0.23563, 0.971843)
+bones/37/rotation = Quaternion(-0.703357, 0.221908, 0.627898, 0.248575)
+bones/38/rotation = Quaternion(-1.53417e-08, 7.63753e-09, 0.384397, 0.923168)
+bones/50/rotation = Quaternion(-0.703357, 0.221908, 0.627898, 0.248575)
+bones/51/rotation = Quaternion(-1.53417e-08, 7.63753e-09, 0.384397, 0.923168)
+bones/53/rotation = Quaternion(-0.0243957, -0.051063, 0.430386, 0.900869)
+bones/59/position = Vector3(-5.11742e-06, 3.1705e-06, 2.43231e-05)
+
+[node name="gdbot_mesh" parent="gdbot/Armature/Skeleton3D" index="0"]
+surface_material_override/1 = SubResource("ShaderMaterial_61wei")
+
+[node name="SubViewport" parent="." index="2"]
+size = Vector2i(256, 256)
+
+[node name="Camera2D" parent="SubViewport" index="0"]
+offset = Vector2(128, 128)
+
+[editable path="gdbot"]

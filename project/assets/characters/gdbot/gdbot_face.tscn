@@ -1,0 +1,450 @@
+[gd_scene load_steps=14 format=3 uid="uid://dvy2nao23i4rl"]
+
+[sub_resource type="GDScript" id="GDScript_xrevk"]
+script/source = "extends Node2D
+
+var _blinking = null : set = _set_blinking
+@onready var _animation_player : AnimationPlayer = $AnimationPlayer
+@onready var _blinking_timer : Timer = $BlinkTimer
+@onready var _closed_eyes_timer : Timer = $ClosedTimer
+@onready var _left_eye : Sprite2D = $LeftEye
+@onready var _right_eye : Sprite2D = $RightEye
+
+var eyes_textures = {
+	\"open\" : preload(\"./texture/parts/eye_open.png\"),
+	\"closed\" : preload(\"./texture/parts/eye_close.png\")
+}
+
+var current_face = null : set = _set_face
+
+func _ready():
+	_blinking_timer.connect(\"timeout\", _on_blink_timer_timeout)
+	_set_blinking(true)
+	current_face = \"default\"
+	
+func _set_blinking(value : bool):
+	_blinking = value
+	if _blinking:
+		_blinking_timer.start()
+	else:
+		_blinking_timer.stop()
+		
+func _on_blink_timer_timeout():
+	# Play secondary action rather than blink
+	if randf_range(0.0, 1.0) > 0.9:
+		_animation_player.play(\"look_around\")
+		await _animation_player.animation_finished
+	else:
+		# Close eyes
+		_set_eyes(\"closed\")
+		_closed_eyes_timer.start(randf_range(0.1, 0.25))
+		await _closed_eyes_timer.timeout
+	# Return to current eyes
+	_set_eyes(\"open\")
+	if randf_range(0.0, 1.0) > 0.8:
+		_blinking_timer.wait_time = randf_range(0.1, 0.15)
+	else:
+		_blinking_timer.wait_time = randf_range(1.0, 4.0)
+	_blinking_timer.start()
+
+func _set_eyes(eyes_name : String):
+	_left_eye.texture = eyes_textures[eyes_name]
+	_right_eye.texture = eyes_textures[eyes_name]
+	
+func _set_face(face_name):
+	if current_face == face_name: return
+	current_face = face_name
+	_animation_player.play(\"RESET\")
+	_animation_player.seek(0.0, true)
+	if face_name == \"default\":
+		_set_blinking(true)
+		return
+	_set_blinking(false)
+	if !_animation_player.has_animation(face_name):
+		push_error(\"Can't set GDBot's face to: '\" + face_name + \"'\")
+		return
+	_animation_player.play(face_name)
+"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ojfxa"]
+load_path = "res://.godot/imported/eye_open.png-b234191b62fc7db35e1c73a62a1c8a44.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8dell"]
+load_path = "res://.godot/imported/smile.png-b49f6b7ffa92f1ccd7eeee7b2ed37ee6.ctex"
+
+[sub_resource type="Animation" id="Animation_33is7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeftEye:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CompressedTexture2D_ojfxa")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RightEye:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CompressedTexture2D_ojfxa")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mouth:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CompressedTexture2D_8dell")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LeftEye:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RightEye:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("LeftEye:flip_h")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("RightEye:flip_h")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Mouth:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 20.2222)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Mouth:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1.2)]
+}
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8ewhq"]
+load_path = "res://.godot/imported/eye_spiral.png-a9bc63170abbb113c765fa5515fb9b92.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yxk7u"]
+load_path = "res://.godot/imported/open_mouth.png-b15abc66504260f9a5ac10312b9247b9.ctex"
+
+[sub_resource type="Animation" id="Animation_ne3is"]
+resource_name = "dizzy"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeftEye:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RightEye:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RightEye:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CompressedTexture2D_8ewhq")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LeftEye:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CompressedTexture2D_8ewhq")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mouth:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CompressedTexture2D_yxk7u")]
+}
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rxeg0"]
+load_path = "res://.godot/imported/eye_happy.png-c30b147f1be7dc74db2a582df01073ea.ctex"
+
+[sub_resource type="Animation" id="Animation_ttnon"]
+resource_name = "happy"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeftEye:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CompressedTexture2D_rxeg0")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RightEye:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CompressedTexture2D_rxeg0")]
+}
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_k0n0u"]
+load_path = "res://.godot/imported/eye_close.png-a619083d193c69c40c7405067bd5abae.ctex"
+
+[sub_resource type="Animation" id="Animation_rbq53"]
+resource_name = "look_around"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RightEye:texture")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [SubResource("CompressedTexture2D_k0n0u"), SubResource("CompressedTexture2D_ojfxa"), SubResource("CompressedTexture2D_k0n0u"), SubResource("CompressedTexture2D_ojfxa"), SubResource("CompressedTexture2D_k0n0u")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LeftEye:texture")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [SubResource("CompressedTexture2D_k0n0u"), SubResource("CompressedTexture2D_ojfxa"), SubResource("CompressedTexture2D_k0n0u"), SubResource("CompressedTexture2D_ojfxa"), SubResource("CompressedTexture2D_k0n0u")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LeftEye:flip_h")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, true, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RightEye:flip_h")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_4tctg"]
+resource_name = "sleepy"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mouth:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CompressedTexture2D_yxk7u")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RightEye:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CompressedTexture2D_k0n0u")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LeftEye:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CompressedTexture2D_k0n0u")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mouth:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mouth:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l5i24"]
+_data = {
+"RESET": SubResource("Animation_33is7"),
+"dizzy": SubResource("Animation_ne3is"),
+"happy": SubResource("Animation_ttnon"),
+"look_around": SubResource("Animation_rbq53"),
+"sleepy": SubResource("Animation_4tctg")
+}
+
+[node name="GDbotFace" type="Node2D"]
+position = Vector2(144, 144)
+script = SubResource("GDScript_xrevk")
+
+[node name="BG" type="ColorRect" parent="."]
+offset_left = -144.0
+offset_top = -144.0
+offset_right = 144.0
+offset_bottom = 144.0
+size_flags_horizontal = 4
+
+[node name="RightEye" type="Sprite2D" parent="."]
+position = Vector2(45, -2)
+texture = SubResource("CompressedTexture2D_ojfxa")
+
+[node name="LeftEye" type="Sprite2D" parent="."]
+position = Vector2(-45, -2)
+texture = SubResource("CompressedTexture2D_ojfxa")
+flip_h = true
+
+[node name="Mouth" type="Sprite2D" parent="."]
+position = Vector2(0, 20.2222)
+scale = Vector2(1, 1.2)
+texture = SubResource("CompressedTexture2D_8dell")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_l5i24")
+}
+
+[node name="BlinkTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ClosedTimer" type="Timer" parent="."]
+one_shot = true

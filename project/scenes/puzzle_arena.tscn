@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://fsral4frc2hr"]
+
+[ext_resource type="Script" path="res://scripts/puzzle_arena.gd" id="1_5f7x2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c8shf"]
+size = Vector3(14.0528, 3.6734, 13)
+
+[node name="puzzle_arena" type="Node3D"]
+script = ExtResource("1_5f7x2")
+
+[node name="area" type="Area3D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="collision_shape_3d" type="CollisionShape3D" parent="area"]
+shape = SubResource("BoxShape3D_c8shf")
+
+[node name="walls" type="Node3D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="exit" type="Node3D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="solved" type="Node3D" parent="."]

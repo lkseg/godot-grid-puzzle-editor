@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://y2yo3a0k7ako"]
+
+[ext_resource type="Script" path="res://scripts/static_object.gd" id="1_6s32s"]
+[ext_resource type="PackedScene" uid="uid://b2u68f2piphdo" path="res://assets/objects/basic/flag.glb" id="2_fxj7a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4j2xh"]
+vertex_color_use_as_albedo = true
+rim_enabled = true
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mmnly"]
+emission_shape = 3
+emission_box_extents = Vector3(0.2, 1, 0.255)
+direction = Vector3(1, 1, 1)
+spread = 88.161
+gravity = Vector3(0, 10, 0)
+linear_accel_min = -6.66
+linear_accel_max = -0.96
+tangential_accel_min = 8.15
+tangential_accel_max = 8.55
+damping_min = 1.492
+damping_max = 1.492
+scale_min = 0.02
+scale_max = 0.02
+color = Color(0.988235, 1, 0.756863, 1)
+hue_variation_max = 0.28
+turbulence_noise_strength = 4.7
+turbulence_initial_displacement_min = -7.6
+turbulence_initial_displacement_max = 11.4
+
+[sub_resource type="BoxMesh" id="BoxMesh_k18t0"]
+
+[node name="node_3d" type="Node3D"]
+script = ExtResource("1_6s32s")
+type = 5
+
+[node name="flag2" parent="." instance=ExtResource("2_fxj7a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="gpu_particles_3d" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0285764, 0)
+material_override = SubResource("StandardMaterial3D_4j2xh")
+amount = 18
+lifetime = 0.39
+process_material = SubResource("ParticleProcessMaterial_mmnly")
+draw_pass_1 = SubResource("BoxMesh_k18t0")

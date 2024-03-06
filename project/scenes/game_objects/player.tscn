@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://domhmkhmumecu"]
+
+[ext_resource type="Script" path="res://scripts/character_object.gd" id="1_662ak"]
+[ext_resource type="PackedScene" uid="uid://fsjw8i6ntbap" path="res://scenes/characters/gdbot.tscn" id="2_vqh0t"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_drsyd"]
+radius = 0.25
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v0uq6"]
+albedo_color = Color(0, 1, 1, 1)
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_662ak")
+type = 4
+
+[node name="mesh_instance_3d" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("CapsuleMesh_drsyd")
+surface_material_override/0 = SubResource("StandardMaterial3D_v0uq6")
+
+[node name="model" parent="." instance=ExtResource("2_vqh0t")]
+transform = Transform3D(0.755, 0, 0, 0, 0.755, 0, 0, 0, 0.755, 0, -0.505663, 0)

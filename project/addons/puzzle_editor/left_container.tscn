@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dxmncg74dta3b"]
+
+[node name="v_box_container" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="item_container" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 3
+
+[node name="label" type="Label" parent="."]
+layout_mode = 2
+text = "Controls:
+Q: Move Up
+E: Move Down
+LClick: Place
+RClick: Delete
+Select Object Type
+ before placing"

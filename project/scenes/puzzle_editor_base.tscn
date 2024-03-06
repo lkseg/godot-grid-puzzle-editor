@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://chvbskds7bwhi"]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_5isn8"]
+[ext_resource type="Script" path="res://addons/puzzle_editor/puzzle_editor.gd" id="1_avgu3"]
+
+[sub_resource type="Environment" id="Environment_wwfrg"]
+glow_enabled = true
+
+[node name="level" type="Node3D"]
+script = ExtResource("1_5isn8")
+
+[node name="camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.4885, 0.872564, 0, -0.872564, 0.4885, 3.67994, 5.09626, 8.5148)
+current = true
+
+[node name="world_environment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wwfrg")
+
+[node name="puzzle_editor" type="Node3D" parent="."]
+script = ExtResource("1_avgu3")
+metadata/_edit_lock_ = true
+
+[node name="directional_light_3d" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+shadow_enabled = true

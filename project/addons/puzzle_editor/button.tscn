@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://b3dtiof5jium8"]
+
+[node name="Control" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1118.0
+offset_bottom = -620.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 14
+text = "test
+"

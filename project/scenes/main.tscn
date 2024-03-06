@@ -1,0 +1,80 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfj23tbpgxbsr"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_pcoit"]
+[ext_resource type="Script" path="res://scripts/ui.gd" id="3_of4pi"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_pcoit")
+
+[node name="ui_layer" type="CanvasLayer" parent="."]
+
+[node name="ui" type="Control" parent="ui_layer"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.5, 0.5)
+script = ExtResource("3_of4pi")
+
+[node name="v_box_container" type="VBoxContainer" parent="ui_layer/ui"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="directions" type="HBoxContainer" parent="ui_layer/ui/v_box_container"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="label" type="Label" parent="ui_layer/ui/v_box_container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Buffer input by  pressing:
+W, A,  S, D
+Execute Input by pressing:
+Space
+"
+
+[node name="container_level_buttons" type="VBoxContainer" parent="ui_layer/ui"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 1600.0
+offset_right = 1654.0
+offset_bottom = 27.0
+grow_horizontal = 2
+scale = Vector2(5, 5)
+
+[node name="panel_container" type="PanelContainer" parent="ui_layer/ui/container_level_buttons"]
+layout_mode = 2
+
+[node name="panel" type="Panel" parent="ui_layer/ui/container_level_buttons/panel_container"]
+layout_mode = 2
+
+[node name="label" type="Label" parent="ui_layer/ui/container_level_buttons/panel_container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Escape"
+
+[node name="container_level_buttons" type="PanelContainer" parent="ui_layer/ui/container_level_buttons"]
+layout_mode = 2
+
+[node name="panel" type="Panel" parent="ui_layer/ui/container_level_buttons/container_level_buttons"]
+layout_mode = 2
+
+[node name="level_buttons" type="VBoxContainer" parent="ui_layer/ui/container_level_buttons/container_level_buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="panel_container2" type="PanelContainer" parent="ui_layer/ui/container_level_buttons"]
+layout_mode = 2
+
+[node name="panel" type="Panel" parent="ui_layer/ui/container_level_buttons/panel_container2"]
+layout_mode = 2
+
+[node name="overworld_button" type="Button" parent="ui_layer/ui/container_level_buttons/panel_container2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Overworld"
