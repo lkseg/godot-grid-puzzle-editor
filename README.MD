@@ -1,7 +1,7 @@
 - [Project](#Project)
 
 <!--- ![](/misc/generator_example.png =512x512) -->
-|Editor | Ingame |
+|Editor | Game |
 |---|----|
 |<img src="./misc/in_editor.png" alt="editor" width="518"/> | <img src="./misc/in_game.png" alt="game" width="518"/>|
 
